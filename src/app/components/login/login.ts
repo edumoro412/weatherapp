@@ -47,8 +47,8 @@ export class Login {
 
     this.weatherService.login(userData).subscribe({
       next: (response: LoginResponse) => {
-        if (typeof response === 'string') {
-          localStorage.setItem('token', response);
+        if (response.status == 200) {
+          localStorage.setItem('token', response.token);
         } else if (response && 'token' in response) {
           localStorage.setItem('token', response.token);
         }
