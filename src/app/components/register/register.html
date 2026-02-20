@@ -1,0 +1,61 @@
+<div class="register">
+  <h1 class="register__title">Crear tu cuenta</h1>
+  <form class="register__form" [formGroup]="registerForm" (submit)="onSubmit()">
+    <p class="register__form--p">
+      <label for="email" class="register__form--p-label"><b>Email:</b></label>
+      <input
+        type="text"
+        name="email"
+        id="email"
+        class="register__form--p-label-input"
+        formControlName="email"
+      />
+      @if(registerForm.get('email')?.touched &&
+      registerForm.get('email')?.invalid){
+      <small class="error">¡Email incorrecto!</small>
+      }
+    </p>
+    <p class="register__form--p">
+      <label for="password" class="register__form--p-label"
+        ><b>Contraseña:</b></label
+      >
+      <input
+        type="password"
+        name="password"
+        id="password"
+        class="register__form--p-label-input"
+        formControlName="password"
+      />
+
+      @if(registerForm.get('password')?.touched &&
+      registerForm.get('password')?.errors?.['upperCase']){
+      <small class="error">Debe tener al menos una mayúscula</small>
+      } @if(registerForm.get('password')?.touched &&
+      registerForm.get('password')?.errors?.['minLength']){
+      <small class="error">Debe tener al menos 8 caracteres</small>
+      } @if(registerForm.get('password')?.touched &&
+      registerForm.get('password')?.errors?.['number']){
+      <small class="error">Debe tener al menos un numero</small>
+      }
+    </p>
+    <p class="register__form--p">
+      <label for="name" class="register__form--p-label"><b>Nombre:</b></label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        class="register__form--p-label-input"
+        formControlName="name"
+      />
+      @if(registerForm.get('name')?.touched &&
+      registerForm.get('name')?.invalid){
+      <small class="error">¡Nombre incorrecto!</small>
+      }
+    </p>
+    <p class="register__form--p-login">
+      Si ya tienes una cuenta inicia sesion.
+      <a href="/login" class="register__form--p-login-anchor">Aquí</a>
+    </p>
+    <button type="submit" class="register__form--button">Crear Cuenta</button>
+  </form>
+</div>
