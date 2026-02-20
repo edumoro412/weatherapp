@@ -8,6 +8,8 @@ export interface UserRegisterInterface extends UserInterface {
 }
 
 export interface LoginResponse {
+  message: string;
+  status?: number;
   token: string;
 }
 
