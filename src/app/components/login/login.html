@@ -1,0 +1,38 @@
+<div class="login">
+  <h1 class="login__title">Iniciar Sesión</h1>
+  <form [formGroup]="loginForm" class="login__form" (submit)="onSubmit()">
+    <p class="login__form--p">
+      <label for="email" class="login__form--p-label"><b>Email:</b></label>
+      <input
+        type="text"
+        name="email"
+        class="login__form--p-label-input"
+        formControlName="email"
+      />
+      @if(loginForm.get('email')?.touched && loginForm.get('email')?.invalid){
+      <small class="error">¡Email incorrecto!</small>
+      }
+    </p>
+
+    <p class="login__form--p">
+      <label for="password" class="login__form--p-label"
+        ><b>Contraseña:</b></label
+      >
+      <input
+        formControlName="password"
+        type="password"
+        name="password"
+        class="login__form--p-label-input"
+      />
+      @if(loginForm.get('password')?.touched &&
+      loginForm.get('password')?.invalid){
+      <small class="error">¡Contraseña incorrecta!</small>
+      }
+    </p>
+    <p class="login__form--p-register">
+      Si no tienes una cuenta registrate.
+      <a href="/register" class="login__form--p-register-anchor">Aquí</a>
+    </p>
+    <button type="submit" class="login__form--button">Iniciar Sesión</button>
+  </form>
+</div>
