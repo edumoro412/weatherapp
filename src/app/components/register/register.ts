@@ -54,7 +54,7 @@ export class Register {
         }
       },
       error: (error: Error) => {
-        alert('Ocurrio un error ');
+        alert('Ocurrio un error ' + error.message);
       },
     });
   }
