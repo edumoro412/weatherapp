@@ -5,6 +5,7 @@
     "login",
     "authguard",
     "weatherservice",
-    "routes"
+    "routes",
+    "settings"
   ]
 }
