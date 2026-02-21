@@ -33,9 +33,6 @@ export class WeatherService {
     return this.http.post<LoginResponse>(
       `${this.apiServerUrl}/auth/login`,
       user,
-      {
-        responseType: 'text' as 'json',
-      },
     );
   }
 
@@ -43,6 +40,12 @@ export class WeatherService {
     return this.http.post<RegisterResponse>(
       `${this.apiServerUrl}/auth/register`,
       user,
+    );
+  }
+
+  public isTokenValid(token: string): Observable<boolean> {
+    return this.http.get<boolean>(
+      `${this.apiServerUrl}/auth/validate?token=${token}`,
     );
   }
 }
