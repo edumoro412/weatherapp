@@ -43,17 +43,12 @@ export class Login {
       password: this.loginForm.value.password,
     };
 
-    console.log(userData, '=========?');
-
     this.weatherService.login(userData).subscribe({
       next: (response: LoginResponse) => {
         if (response.status == 200) {
           localStorage.setItem('token', response.token);
-        } else if (response && 'token' in response) {
-          localStorage.setItem('token', response.token);
+          this.router.navigate(['/']);
         }
-
-        this.router.navigate(['/']);
       },
       error: (error: Error) => {
         console.error('Ocurrio un error', userData);
